@@ -1,0 +1,41 @@
+/* add all CSS here! */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/*
+Regular 400
+Medium 500
+SemiBold 600
+Bold 700
+*/
+
+main {
+  
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  
+  background-color: rgb(66,145,152);
+  padding: 50px;
+  margin-top: 0;
+  
+  color: whitesmoke;
+  font-family: 'inter';
+  font-size: 28px;
+  font-weight: 700;
+}
+
+div {
+  display: flex;
+  justify-content: center;
+  
+  font-family: 'inter';
+  font-size: 16px;
+  font-weight: 400;
+}
+
+div#text1 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
