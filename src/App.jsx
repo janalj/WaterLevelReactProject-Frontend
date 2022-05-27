@@ -2,8 +2,26 @@ import React, { useEffect, useState } from "react";
 import './App.css';
 import { Bar } from "react-chartjs-2";
 import Chart from 'chart.js/auto';
+import MonthPicker from './MonthPicker';
 
 function App() {
+  // Month Picker 
+  const [date, setDate] = useState({month: 6, year: 2022 });
+
+  function yearChange(newYear) {
+      let m = date.month;
+      setDate({year: newYear, month: m });
+    }
+
+  function monthChange(newMonth){
+      let y = date.year;
+      setDate({month: newMonth, year: y});
+    }
+
+  useEffect(() => {
+	console.log("I Only run once (When the component gets mounted)")
+}, []);
+  
   const [seeMore, setSeeMore] = useState(false);
   // when buttonAction is called, set seeMore variable to true
   function buttonAction() {
@@ -20,6 +38,12 @@ function App() {
       </div>
 
         <SchoolChart schools={testProps}> </SchoolChart>
+        <MonthPicker  
+          // props 
+          date = {date}
+          yearFun = {yearChange}
+          monthFun = {monthChange}
+          />
 
       </main>
 
@@ -51,7 +75,7 @@ function SchoolChart(props) {
   nicknames.set(5, 'Don Pedro');
   nicknames.set(6, 'Berryessa');
 
-  if (props.schools) {
+  if (props.schools) { // need to change props.schools 
     let n = props.schools.length;
     console.log(props.schools);
 
@@ -134,6 +158,7 @@ function SchoolChart(props) {
     )
   }
 }
+
 
 
 

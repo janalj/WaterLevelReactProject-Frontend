@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
 import StaticInfo from './Static'
+import MonthPicker from './MonthPicker';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,3 +20,9 @@ ReactDOM.render(
   document.getElementById('root')
 )
 
+ReactDOM.render(
+  <React.StrictMode>
+    <MonthPicker />
+  </React.StrictMode>,
+  document.getElementById('monthPicker')
+)
