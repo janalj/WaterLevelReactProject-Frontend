@@ -39,3 +39,8 @@ div#text1 {
   justify-content: center;
   flex-direction: column;
 }
+
+#chart-container{
+  width:400px;
+  height: 300px;
+}

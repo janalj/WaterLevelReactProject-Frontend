@@ -56,7 +56,7 @@ function SchoolChart(props) {
     console.log(props.schools);
 
     // objects containing row values
-    let stickerObj = { data: [], backgroundColor: ["rgb(120,199,227)"], barThickness: 40 }
+    let stickerObj = { data: [], backgroundColor: ["rgb(120,199,227)"], barThickness: 20 }
     let labels = [];
     for (let i = 0; i < 7; i++) {
       stickerObj.data.push(props.schools[i].sticker);
