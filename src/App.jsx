@@ -56,17 +56,33 @@ function SchoolChart(props) {
     console.log(props.schools);
 
     // objects containing row values
-    let stickerObj = { data: [], backgroundColor: ["rgb(120,199,227)"], barThickness: 20 }
+    let stickerObj = { data: [], backgroundColor: ["rgb(66,145,152)"], barThickness: 20 }
     let labels = [];
     for (let i = 0; i < 7; i++) {
       stickerObj.data.push(props.schools[i].sticker);
       labels.push(nicknames.get(i));
     }
 
+    // Returned the capacity array here 
+    let capacity = [40,30,50,60,50,50,50];
 
+    let difference = [10,10,10,10,10,10,10];
+    // run forloop to get the differece array
+
+    //console.log("stickerObj array: ", stickerObj.data[0]);
+   //  for (let j = 0; j < 7; i++) {
+	  // //difference[j] = capacity[j]-stickerObj.data[j];
+      
+   //  };
+    console.log("difference array: ", difference);
+
+  let stackedObj = {data: difference, backgroundColor: ["rgb(120,199,227)"], barThickness: 20}
+    
+    
+    
     let userData = {};
     userData.labels = labels;
-    userData.datasets = [stickerObj];
+    userData.datasets = [stickerObj,stackedObj];
     
     console.log("User Data",userData);
     let options = {
@@ -90,6 +106,7 @@ function SchoolChart(props) {
                     minRotation: 50,
             
                 },
+          stacked: true
           
         },
         
@@ -98,10 +115,11 @@ function SchoolChart(props) {
             display: false
           }, 
           min:10,
-          max: 80,
+          max: 60,
           ticks: {
           stepSize: 10
-        }      
+        },
+          stacked: true
                     
         }
        
