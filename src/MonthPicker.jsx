@@ -37,14 +37,14 @@ return (
       </div> );
   } else {
     return (
-      <div>
+      <main>
         <input 
           defaultValue = {date.month+"/"+date.year}
           
           className = "inputMonthYear"
           onClick={showFun}
           />
-      </div>
+      </main >
     )
   }
 }

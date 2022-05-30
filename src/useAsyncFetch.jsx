@@ -10,7 +10,7 @@ const useAsyncFetch = function (url, options, thenFun, catchFun ) {
   // the usual function that does a fetch
   async function fetchData() {
     // Send request to origin server at appropriate endpoint
-    let api_url = `/query/getList`;
+    let api_url = `/query/getData`;
     let response = await fetch(api_url);
 
     // Wait for origin server to send back JSON object

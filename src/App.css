@@ -44,3 +44,8 @@ div#text1 {
   width:400px;
   height: 300px;
 }
+
+.month-year-picker{
+  margin: auto;
+  width:400px;
+}
