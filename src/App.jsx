@@ -31,9 +31,25 @@ function App() {
     } else (setSeeMore(true))
   }
 
-// make ajax call, return an object
-  // returnedObjectName = {} replace testProps with ObjectName
+  
+  // // Testing Data
+  // let testProps = [{ name: 'University of California-Davis', midIncome: 12875, sticker: 30 }, { name: 'Stanford', midIncome: 3985, sticker: 20 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, sticker: 40 }, { name: 'Stanford', midIncome: 3985, sticker: 50 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, sticker: 35 }, { name: 'Stanford', sticker: 40 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, sticker: 40 }, { name: 'Stanford', midIncome: 3985, sticker: 74570 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, sticker: 25 }];
 
+  
+  // make ajax call, return an object
+  // returnedObjectName = {} replace testProps with ObjectName
+  
+  let testProps = [];
+  useAsyncFetch("query/getData", date.year, date.month, {}, thenFun, catchFun);
+  
+  function thenFun (result) {
+    testProps = result;
+    // render the list once we have it
+  }
+  
+  function catchFun (error) {
+    console.log(error);
+  }
 
 
   if (seeMore) {  // if seeMore is true 
@@ -43,7 +59,7 @@ function App() {
         <div id="datatext" className='bodyText'>
           Here's a quick look at some of the data on reservoirs from the <a href="https://cdec.water.ca.gov/index.html">California Data Exchange Center</a>, which consolidates climate and water data from multiple federal and state government agencies, and  electric utilities.  Select a month and year to see storage levels in the eleven largest in-state reservoirs.
       </div>
-        <SchoolChart schools={testProps}> </SchoolChart> 
+        <WaterChart waterData={testProps}> </WaterChart> 
         <MonthPicker
           // props 
           date={date}
@@ -66,12 +82,10 @@ function App() {
 
 }//end of app
 
-// Testing Data
-let testProps = [{ name: 'University of California-Davis', midIncome: 12875, sticker: 30 }, { name: 'Stanford', midIncome: 3985, sticker: 20 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, sticker: 40 }, { name: 'Stanford', midIncome: 3985, sticker: 50 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, sticker: 35 }, { name: 'Stanford', sticker: 40 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, sticker: 40 }, { name: 'Stanford', midIncome: 3985, sticker: 74570 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, sticker: 25 }]
 
 
 console.log()
-function SchoolChart(props) {
+function WaterChart(props) {
   const nicknames = new Map();
   nicknames.set(0, 'Shasta');
   nicknames.set(1, 'Ororville');
@@ -80,27 +94,17 @@ function SchoolChart(props) {
   nicknames.set(4, 'San Luis');
   nicknames.set(5, 'Don Pedro');
   nicknames.set(6, 'Berryessa');
+  //Station Ids: SHA, ORO, CLE, NML, LUS, DNP, BER 
 
-  if (props.schools) { // need to change props.schools 
-    let n = props.schools.length;
-    console.log(props.schools);
-
-    // useAsyncFetch("query/getData", date.year, date.month, {}, thenFun, catchFun);
-  
-    // function thenFun (result) {
-    //   setSchools(result);
-    //   // render the list once we have it
-    // }
-    
-    // function catchFun (error) {
-    //   console.log(error);
-    // }
+  if (props.waterData) { 
+    let n = props.waterData.length;
+    console.log("Water Data", props.waterData);
     
     // objects containing row values
     let stickerObj = { data: [], backgroundColor: ["rgb(66,145,152)"], barThickness: 20 }
     let labels = [];
     for (let i = 0; i < 7; i++) {
-      stickerObj.data.push(props.schools[i].sticker);
+      stickerObj.data.push(props.waterData[i].waterLevel);
       labels.push(nicknames.get(i));
     }
 
@@ -110,11 +114,11 @@ function SchoolChart(props) {
 
     let difference = [10, 10, 10, 10, 10, 10, 10];
   
-    // console.log("stickerObj array: ", stickerObj.data[0]);
-    // for (let i = 0; i < 7; i++) {
-    //     difference[i] = capacity[i]-stickerObj.data[i];
-    // }
-    // console.log("difference array: ", difference);
+    console.log("stickerObj array: ", stickerObj.data[0]);
+    for (let i = 0; i < 7; i++) {
+        difference[i] = capacity[i]-stickerObj.data[i];
+    }
+    console.log("difference array: ", difference);
 
     let stackedObj = { data: difference, backgroundColor: ["rgb(120,199,227)"], barThickness: 20 }
 
