@@ -4,14 +4,26 @@
 
 import React, {useEffect} from 'react';
 
-const useAsyncFetch = function (url, options, thenFun, catchFun ) {
+const useAsyncFetch = function (url, year, month, options, thenFun, catchFun ) {
   console.log("in useAsyncFetch");
 
   // the usual function that does a fetch
   async function fetchData() {
     // Send request to origin server at appropriate endpoint
+    let data = {
+      year: year,
+      month: month
+    }
+
+    params = {
+    method: 'GET', 
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data) };
+    
     let api_url = `/query/getData`;
-    let response = await fetch(api_url);
+    
+    console.log("about to send post request");
+    let response = await fetch(api_url, params);
 
     // Wait for origin server to send back JSON object
     let json = await response.json();

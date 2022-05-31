@@ -8,44 +8,107 @@ Bold 700
 */
 
 main {
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
 }
 
 h1 {
   display: flex;
   justify-content: center;
+  align-items: center;
   
   background-color: rgb(66,145,152);
   padding: 50px;
   margin-top: 0;
+  margin-bottom: 50px;
+  width: 100%;
   
   color: whitesmoke;
   font-family: 'inter';
   font-size: 28px;
   font-weight: 700;
+  text-align: center;
 }
 
 div {
   display: flex;
   justify-content: center;
-  
-  font-family: 'inter';
-  font-size: 16px;
-  font-weight: 400;
+  flex-direction: column;
+  width: 80%;
 }
 
 div#text1 {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  width: 80%;
+  order: 1;
+}
+
+.bodyText {
+  display: inline;
+  font-family: 'inter';
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#imageDiv{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  order: 0;
+}
+
+#image{
+  width: 100%;
+}
+
+#caption{
+  font-family: 'inter';
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+button{
+  height: 40px;
+  width: 140px;
+  background-color: rgb(66,145,152);
+  color: whitesmoke;
+  border: none;
+  border-radius: 10px;
+  margin: 20px;
+  
+  font-family: 'inter';
+  font-size: 16px;
+  font-weight: 500;
 }
 
 #chart-container{
-  width:400px;
-  height: 300px;
+  width: 400px;
+  height:300px;
 }
 
-.month-year-picker{
+#month-year-picker{
   margin: auto;
-  width:400px;
+  width:50px;
 }
+
+/*Tablet View*/
+@media screen and (min-width:900px) {
+
+}
+
+/*Desktop View*/
+@media screen and (min-width:1512px) {
+
+
+}
+
+
+

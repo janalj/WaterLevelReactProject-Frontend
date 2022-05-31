@@ -1,49 +1,59 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState } from "react";
 // an third-party component from NPM
 import MonthYearPicker from 'react-month-year-picker';
+import './App.css';
 
 function MonthPicker(props) {
-let date = props.date;
+  useEffect(() => {
+    console.log("I Only run once (When the month gets mounted)")
+  }, []);
+  let date = props.date;
 
-const [visible,updateVisible] = useState(false);
+  const [visible, updateVisible] = useState(false);
 
-function showFun () {
-  updateVisible(true);
-}
+  function showFun() {
+    updateVisible(true);
+  }
 
-function pickedYear (year) {
-  updateVisible(false);
-  props.yearFun(year);
-}
+  function pickedYear(year) {
+    updateVisible(false);
+    props.yearFun(year);
+  }
 
-function pickedMonth (month) {
-  updateVisible(false);
-  props.monthFun(month);
-}
+  function pickedMonth(month) {
+    updateVisible(false);
+    props.monthFun(month);
+  }
 
-  
+
   if (visible) {
-return (
+    return (
       <div>
-        <MonthYearPicker
-          caption=""
-          selectedMonth={date.month}
-          selectedYear={date.year}
-          minYear={2000}
-          maxYear={2022}
-          onChangeYear = {pickedYear}
-          onChangeMonth = {pickedMonth}
+        <input
+          defaultValue={date.month + "/" + date.year}
+          className="inputMonthYear"
+          onClick={showFun}
         />
-      </div> );
+        <div id="month-year-picker">
+          <MonthYearPicker
+            caption=""
+            selectedMonth={date.month}
+            selectedYear={date.year}
+            minYear={2000}
+            maxYear={2022}
+            onChangeYear={pickedYear}
+            onChangeMonth={pickedMonth}
+          />
+        </div>
+      </div>);
   } else {
     return (
       <main>
-        <input 
-          defaultValue = {date.month+"/"+date.year}
-          
-          className = "inputMonthYear"
+        <input
+          defaultValue={date.month + "/" + date.year}
+          className="inputMonthYear"
           onClick={showFun}
-          />
+        />
       </main >
     )
   }
