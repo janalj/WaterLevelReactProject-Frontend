@@ -16,7 +16,7 @@ function MonthPicker(props) {
   }
 
   function pickedYear(year) {
-    updateVisible(false);
+    updateVisible(true);
     props.yearFun(year);
   }
 
@@ -43,6 +43,7 @@ function MonthPicker(props) {
             maxYear={2022}
             onChangeYear={pickedYear}
             onChangeMonth={pickedMonth}
+            
           />
         </div>
       </div>);

@@ -1,3 +1,30 @@
 {
-  "files": {}
+  "files": {
+    "src/App.jsx": [
+      {
+        "id": "0003b55e-d8d6-4693-a255-e7c35fe4fab3",
+        "line": 10,
+        "version": 2871,
+        "index": 271
+      },
+      {
+        "id": "42be520b-1f84-4c0e-b9a6-b0a2af6e5df3",
+        "line": 10,
+        "version": 2871,
+        "index": 271
+      },
+      {
+        "id": "c4ced037-49e5-4976-9a78-d88fe06255d0",
+        "line": 40,
+        "version": 2901,
+        "index": 1447
+      },
+      {
+        "id": "9d2ee9bf-51e7-4551-9bb7-5c33ac6fe3eb",
+        "line": 44,
+        "version": 2881,
+        "index": 2099
+      }
+    ]
+  }
 }

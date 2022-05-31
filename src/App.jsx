@@ -30,6 +30,12 @@ function App() {
       setSeeMore(false);
     } else (setSeeMore(true))
   }
+
+// make ajax call, return an object
+  // returnedObjectName = {} replace testProps with ObjectName
+
+
+
   if (seeMore) {  // if seeMore is true 
     return (
       <div id = "MonthPickerWrapper">
@@ -37,7 +43,7 @@ function App() {
         <div id="datatext" className='bodyText'>
           Here's a quick look at some of the data on reservoirs from the <a href="https://cdec.water.ca.gov/index.html">California Data Exchange Center</a>, which consolidates climate and water data from multiple federal and state government agencies, and  electric utilities.  Select a month and year to see storage levels in the eleven largest in-state reservoirs.
       </div>
-        <SchoolChart schools={testProps}> </SchoolChart>
+        <SchoolChart schools={testProps}> </SchoolChart> 
         <MonthPicker
           // props 
           date={date}
