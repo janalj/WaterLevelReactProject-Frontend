@@ -4,18 +4,18 @@
 import fetch from 'cross-fetch';
 import React, {useEffect} from 'react';
 
-const useAsyncFetch = function (url, dataPassed, options, thenFun, catchFun) {
+async function useAsyncFetch(url, dataPassed, options, thenFun, catchFun) {
   console.log("in useAsyncFetch");
 
   // send a POST request
   async function sendPostRequest(url, postData) {
-    console.log(postData);
+    console.log('postData',postData);
     
     let params = {
     method: 'POST', 
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(postData) };
-    
+    console.log('body',params.body);
     console.log("about to send POST request");
   
     let response = await fetch(url,params);
@@ -57,17 +57,16 @@ const useAsyncFetch = function (url, dataPassed, options, thenFun, catchFun) {
     sendPostRequest("/query/postDate", dataPassed)
     .then( function (response) {
       console.log("Response recieved", response);
+      fetchData();
     })
     .catch( function(err) {
       console.log("POST request error", err);
     });
     
-    fetchData();
+    
     
   }, []);
 
 }
-
-
 
 export default useAsyncFetch;

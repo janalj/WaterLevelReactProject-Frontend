@@ -6,11 +6,8 @@ import './App.css';
 function MonthPicker(props) {
 
   let date = props.date;
-  
   let defultData = date.month + "/" + date.year;
-  console.log("date.year: ",date.year);
-  console.log("date.month: ",date.month);
-  console.log("defaultData: ",defultData);
+  
   const [visible, updateVisible] = useState(false);
 
   function showFun() {
@@ -27,11 +24,11 @@ function MonthPicker(props) {
     props.monthFun(month);
   }
 
-  
+
   if (visible) {
     return (
       <div id="dropDown">
-        
+        <div id="changeMonth">Change month: </div>
         <input
           placeholder={defultData}
           className="inputMonthYear"
@@ -46,7 +43,6 @@ function MonthPicker(props) {
             maxYear={2022}
             onChangeYear={pickedYear}
             onChangeMonth={pickedMonth}
-            
           />
         </div>
       </div>);

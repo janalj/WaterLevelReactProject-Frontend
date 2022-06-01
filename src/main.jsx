@@ -12,7 +12,6 @@ ReactDOM.render(
   document.getElementById('static')
 )
 
-
 ReactDOM.render(
   <React.StrictMode>
     <App />
@@ -20,9 +19,3 @@ ReactDOM.render(
   document.getElementById('root')
 )
 
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <MonthPicker />
-//   </React.StrictMode>,
-//   document.getElementById('monthPicker')
-// )
