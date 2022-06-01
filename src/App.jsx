@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './App.css';
-import useAsyncFetch, { sendPostRequest } from './useAsyncFetch';
+import {useAsyncFetch, sendPostRequest} from './useAsyncFetch';
 import { Bar } from "react-chartjs-2";
 import Chart from 'chart.js/auto';
 import MonthPicker from './MonthPicker';
