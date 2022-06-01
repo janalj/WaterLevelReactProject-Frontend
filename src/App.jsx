@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './App.css';
-import {useAsyncFetch, sendPostRequest} from './useAsyncFetch';
+import useAsyncFetch from './useAsyncFetch';
 import { Bar } from "react-chartjs-2";
 import Chart from 'chart.js/auto';
 import MonthPicker from './MonthPicker';
@@ -31,18 +31,19 @@ function App() {
 
   
   // Testing Data
-  let dataArr = [{ name: 'University of California-Davis', midIncome: 12875, waterLevel: 30 }, { name: 'Stanford', midIncome: 3985, waterLevel: 20 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 40 }, { name: 'Stanford', midIncome: 3985, waterLevel: 50 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 35 }, { name: 'Stanford', waterLevel: 40 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 40 }, { name: 'Stanford', midIncome: 3985, waterLevel: 74570 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 25 }];
+  //let dataArr = [{ name: 'University of California-Davis', midIncome: 12875, waterLevel: 30 }, { name: 'Stanford', midIncome: 3985, waterLevel: 20 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 40 }, { name: 'Stanford', midIncome: 3985, waterLevel: 50 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 35 }, { name: 'Stanford', waterLevel: 40 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 40 }, { name: 'Stanford', midIncome: 3985, waterLevel: 74570 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 25 }];
 
   
   // make ajax call, return an object
-  // returnedObjectName = {} replace testProps with ObjectName
+  //returnedObjectName = {} replace testProps with ObjectName
 
-  // const [dataArr, upDateArr] = useState([]);
+  const [dataArr, upDateArr] = useState([]);
 
-  // let data = {
-  //   year: date.year,
-  //   month: date.month
-  // }
+  let data = {
+    year: date.year,
+    month: date.month
+  }
+
 
   // sendPostRequest("/query/postDate", data)
   //   .then( function (response) {
@@ -52,15 +53,15 @@ function App() {
   //     console.log("POST request error", err);
   //   });
   
-  // useAsyncFetch("/query/getData", {}, thenFun, catchFun);
+  useAsyncFetch("/query/getData", {}, thenFun, catchFun);
   
-  // function thenFun (result) {
-  //   upDateArr(result);
-  //   // render the list once we have it
-  // }
-  // function catchFun (error) {
-  //   console.log(error);
-  // }
+  function thenFun (result) {
+    upDateArr(result);
+    // render the list once we have it
+  }
+  function catchFun (error) {
+    console.log(error);
+  }
 
 
   if (seeMore) {  // if seeMore is true 

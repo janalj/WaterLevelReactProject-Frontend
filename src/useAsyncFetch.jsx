@@ -7,6 +7,9 @@ import React, {useEffect} from 'react';
 const useAsyncFetch = function (url, options, thenFun, catchFun ) {
   console.log("in useAsyncFetch");
 
+
+  
+  
   // the usual function that does a fetch
   async function fetchData() {
     // Send request to origin server at appropriate endpoint
