@@ -31,27 +31,25 @@ function App() {
 
   
   // Testing Data
-  //let dataArr = [{ name: 'University of California-Davis', midIncome: 12875, waterLevel: 30 }, { name: 'Stanford', midIncome: 3985, waterLevel: 20 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 40 }, { name: 'Stanford', midIncome: 3985, waterLevel: 50 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 35 }, { name: 'Stanford', waterLevel: 40 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 40 }, { name: 'Stanford', midIncome: 3985, waterLevel: 74570 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 25 }];
+  let dataArr = [{ name: 'University of California-Davis', midIncome: 12875, waterLevel: 30 }, { name: 'Stanford', midIncome: 3985, waterLevel: 20 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 40 }, { name: 'Stanford', midIncome: 3985, waterLevel: 50 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 35 }, { name: 'Stanford', waterLevel: 40 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 40 }, { name: 'Stanford', midIncome: 3985, waterLevel: 74570 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 25 }];
 
 
-  const [dataArr, upDateArr] = useState([]);
+  // const [dataArr, upDateArr] = useState([]);
 
-  let data = {
-    year: date.year,
-    month: date.month
-  }
+  // let data = {
+  //   year: date.year,
+  //   month: date.month
+  // }
 
-
+  // useAsyncFetch("/query/getData", data, {}, thenFun, catchFun);
   
-  useAsyncFetch("/query/getData", data, {}, thenFun, catchFun);
-  
-  function thenFun (result) {
-    upDateArr(result);
-    // render the list once we have it
-  }
-  function catchFun (error) {
-    console.log(error);
-  }
+  // function thenFun (result) {
+  //   upDateArr(result);
+  //   // render the list once we have it
+  // }
+  // function catchFun (error) {
+  //   console.log(error);
+  // }
 
 
   if (seeMore) {  // if seeMore is true 
@@ -121,10 +119,10 @@ function WaterChart(props) {
     let difference = [10, 10, 10, 10, 10, 10, 10];
   
     console.log("stickerObj array: ", stickerObj.data[0]);
-    // for (let i = 0; i < 7; i++) {
-    //     difference[i] = capacity[i]-stickerObj.data[i];
-    // }
-    // console.log("difference array: ", difference);
+    for (let i = 0; i < 7; i++) {
+        difference[i] = capacity[i]-stickerObj.data[i];
+    }
+    console.log("difference array: ", difference);
 
     let stackedObj = { data: difference, backgroundColor: ["rgb(120,199,227)"], barThickness: 20 }
 

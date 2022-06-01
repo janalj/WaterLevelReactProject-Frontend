@@ -7,7 +7,7 @@ function MonthPicker(props) {
 
   let date = props.date;
   
-  defultData = date.month + "/" + date.year;
+  let defultData = date.month + "/" + date.year;
   console.log("defaultData: ",date.year);
   console.log("defaultData: ",date.month);
   console.log("defaultData: ",defultData);
@@ -31,7 +31,7 @@ function MonthPicker(props) {
   if (visible) {
     return (
       <div id="dropDown">
-        <p id="changeMonth">Change month: </p>
+        
         <input
           defaultValue={defultData}
           className="inputMonthYear"
@@ -53,7 +53,7 @@ function MonthPicker(props) {
   } else {
     return (
       <div id="dropDown">
-        <p id="changeMonth">Change month: </p>
+        <div id="changeMonth">Change month: </div>
         <input
           defaultValue={defultData}
           className="inputMonthYear"
