@@ -10,7 +10,8 @@ const useAsyncFetch = function (url, options, thenFun, catchFun ) {
   // the usual function that does a fetch
   async function fetchData() {
     // Send request to origin server at appropriate endpoint
-  
+    console.log("in fetchData");
+    
     let api_url = `/query/getData`;
     
     let response = await fetch(api_url);
