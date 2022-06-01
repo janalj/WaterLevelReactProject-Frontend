@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './App.css';
-import useAsyncFetch from './useAsyncFetch';
+import useAsyncFetch, { sendPostRequest } from './useAsyncFetch';
 import { Bar } from "react-chartjs-2";
 import Chart from 'chart.js/auto';
 import MonthPicker from './MonthPicker';
@@ -21,7 +21,7 @@ function App() {
 
   useEffect(() => {
     console.log("I Only run once (When the component gets mounted)")
-  }, [date.year]);
+  }, []);
 
   const [seeMore, setSeeMore] = useState(false);
   // when buttonAction is called, set seeMore variable to true
@@ -38,15 +38,28 @@ function App() {
   
   // make ajax call, return an object
   // returnedObjectName = {} replace testProps with ObjectName
+
+  const [dataArr, upDateArr] = useState([]);
+
+  let data = {
+    year: date.year,
+    month: date.month
+  }
+
+  sendPostRequest("/query/postDate", data)
+    .then( function (response) {
+      console.log("Response recieved", response);
+    })
+    .catch( function(err) {
+      console.log("POST request error", err);
+    });
   
-  let testProps = [];
-  useAsyncFetch("query/getData", date.year, date.month, {}, thenFun, catchFun);
+  useAsyncFetch("/query/getData", {}, thenFun, catchFun);
   
   function thenFun (result) {
-    testProps = result;
+    upDateArr(result);
     // render the list once we have it
   }
-  
   function catchFun (error) {
     console.log(error);
   }
@@ -59,7 +72,7 @@ function App() {
         <div id="datatext" className='bodyText'>
           Here's a quick look at some of the data on reservoirs from the <a href="https://cdec.water.ca.gov/index.html">California Data Exchange Center</a>, which consolidates climate and water data from multiple federal and state government agencies, and  electric utilities.  Select a month and year to see storage levels in the eleven largest in-state reservoirs.
       </div>
-        <WaterChart waterData={testProps}> </WaterChart> 
+        <WaterChart waterData={dataArr}> </WaterChart> 
         <MonthPicker
           // props 
           date={date}

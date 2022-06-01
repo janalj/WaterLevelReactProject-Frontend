@@ -1,29 +1,19 @@
 // A custom hook that calls fetch.
 // A hook is a function that can be called by React components.
 // This one is wrapped around the built-in effect hook.  
-
+import fetch from 'cross-fetch';
 import React, {useEffect} from 'react';
 
-const useAsyncFetch = function (url, year, month, options, thenFun, catchFun ) {
+const useAsyncFetch = function (url, options, thenFun, catchFun ) {
   console.log("in useAsyncFetch");
 
   // the usual function that does a fetch
   async function fetchData() {
     // Send request to origin server at appropriate endpoint
-    let data = {
-      year: year,
-      month: month
-    }
-
-    params = {
-    method: 'GET', 
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(data) };
-    
+  
     let api_url = `/query/getData`;
     
-    console.log("about to send post request");
-    let response = await fetch(api_url, params);
+    let response = await fetch(api_url);
 
     // Wait for origin server to send back JSON object
     let json = await response.json();
@@ -47,4 +37,24 @@ const useAsyncFetch = function (url, year, month, options, thenFun, catchFun ) {
 
 }
 
-export default useAsyncFetch;
+// send a POST request
+async function sendPostRequest(url,data) {
+  let params = {
+    method: 'POST', 
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data) };
+  
+  console.log("about to send POST request");
+  console.log(params);
+
+  let response = await fetch(url,params);
+  if (response.ok) {
+    let data = await response.json();
+    return data;
+  } else {
+    throw Error(response.status);
+  }
+}
+
+
+export {useAsyncFetch, sendPostRequest};
