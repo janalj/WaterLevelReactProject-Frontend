@@ -19,9 +19,7 @@ function App() {
     setDate({ month: newMonth, year: y });
   }
 
-  useEffect(() => {
-    console.log("I Only run once (When the component gets mounted)")
-  }, []);
+
 
   const [seeMore, setSeeMore] = useState(false);
   // when buttonAction is called, set seeMore variable to true
@@ -67,19 +65,22 @@ function App() {
 
   if (seeMore) {  // if seeMore is true 
     return (
-      <div id = "MonthPickerWrapper">
+      <div id = "Wrapper">
         <button onClick={buttonAction}>See Less</button>
-        <div id="datatext" className='bodyText'>
-          Here's a quick look at some of the data on reservoirs from the <a href="https://cdec.water.ca.gov/index.html">California Data Exchange Center</a>, which consolidates climate and water data from multiple federal and state government agencies, and  electric utilities.  Select a month and year to see storage levels in the eleven largest in-state reservoirs.
-      </div>
-        <WaterChart waterData={dataArr}> </WaterChart> 
-        <MonthPicker
-          // props 
-          date={date}
-          yearFun={yearChange}
-          monthFun={monthChange}
-        />
-
+        <div id="bottom">
+          <WaterChart waterData={dataArr}> </WaterChart> 
+          <div id="textAndPicker">
+            <div id="datatext" className='bodyText'>
+              Here's a quick look at some of the data on reservoirs from the <a href="https://cdec.water.ca.gov/index.html">California Data Exchange Center</a>, which consolidates climate and water data from multiple federal and state government agencies, and  electric utilities.  Select a month and year to see storage levels in the eleven largest in-state reservoirs.
+            </div>
+            <MonthPicker
+              // props 
+              date={date}
+              yearFun={yearChange}
+              monthFun={monthChange}
+            />
+          </div>
+        </div>
       </div>
 
 
@@ -87,9 +88,9 @@ function App() {
   }//end of if statement
   else { // if seeMore is false
     return (
-      <main>
+      <seemore>
         <button onClick={buttonAction}>See More</button>
-      </main>
+      </seemore>
     )
   }//end of else statement 
 

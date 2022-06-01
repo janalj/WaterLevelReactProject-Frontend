@@ -4,9 +4,7 @@ import MonthYearPicker from 'react-month-year-picker';
 import './App.css';
 
 function MonthPicker(props) {
-  useEffect(() => {
-    console.log("I Only run once (When the month gets mounted)")
-  }, []);
+
   let date = props.date;
 
   const [visible, updateVisible] = useState(false);

@@ -7,7 +7,7 @@ SemiBold 600
 Bold 700
 */
 
-main {
+main{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,10 +83,41 @@ button{
   border: none;
   border-radius: 10px;
   margin: 20px;
+  margin-left: 0;
   
   font-family: 'inter';
   font-size: 16px;
   font-weight: 500;
+}
+
+#moreContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+}
+
+#Wrapper{
+  width:100%
+}
+
+#bottom{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+#textAndPicker{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#datatext{
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 #chart-container{
@@ -95,8 +126,8 @@ button{
 }
 
 #month-year-picker{
-  margin: auto;
-  width:50px;
+  margin: 0;
+  width: 20px;
 }
 
 /*Tablet View*/
