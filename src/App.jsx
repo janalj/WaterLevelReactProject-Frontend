@@ -7,7 +7,7 @@ import MonthPicker from './MonthPicker';
 
 function App() {
   // Month Picker 
-  const [date, setDate] = useState({ month: 6, year: 2022 });
+  const [date, setDate] = useState({ month:4 , year: 2022 });
 
   function yearChange(newYear) {
     let m = date.month;
@@ -33,9 +33,6 @@ function App() {
   // Testing Data
   //let dataArr = [{ name: 'University of California-Davis', midIncome: 12875, waterLevel: 30 }, { name: 'Stanford', midIncome: 3985, waterLevel: 20 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 40 }, { name: 'Stanford', midIncome: 3985, waterLevel: 50 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 35 }, { name: 'Stanford', waterLevel: 40 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 40 }, { name: 'Stanford', midIncome: 3985, waterLevel: 74570 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 25 }];
 
-  
-  // make ajax call, return an object
-  //returnedObjectName = {} replace testProps with ObjectName
 
   const [dataArr, upDateArr] = useState([]);
 
@@ -43,15 +40,6 @@ function App() {
     year: date.year,
     month: date.month
   }
-
-
-  // sendPostRequest("/query/postDate", data)
-  //   .then( function (response) {
-  //     console.log("Response recieved", response);
-  //   })
-  //   .catch( function(err) {
-  //     console.log("POST request error", err);
-  //   });
   
   useAsyncFetch("/query/getData", data, {}, thenFun, catchFun);
   
@@ -131,10 +119,10 @@ function WaterChart(props) {
     let difference = [10, 10, 10, 10, 10, 10, 10];
   
     console.log("stickerObj array: ", stickerObj.data[0]);
-    // for (let i = 0; i < 7; i++) {
-    //     difference[i] = capacity[i]-stickerObj.data[i];
-    // }
-    // console.log("difference array: ", difference);
+    for (let i = 0; i < 7; i++) {
+        difference[i] = capacity[i]-stickerObj.data[i];
+    }
+    console.log("difference array: ", difference);
 
     let stackedObj = { data: difference, backgroundColor: ["rgb(120,199,227)"], barThickness: 20 }
 

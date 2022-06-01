@@ -9,13 +9,14 @@ const useAsyncFetch = function (url, dataPassed, options, thenFun, catchFun) {
 
   // send a POST request
   async function sendPostRequest(url, postData) {
+    console.log(postData);
+    
     let params = {
-      method: 'POST', 
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(postData) };
+    method: 'POST', 
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(postData) };
     
     console.log("about to send POST request");
-    console.log(params);
   
     let response = await fetch(url,params);
     if (response.ok) {
@@ -52,7 +53,7 @@ const useAsyncFetch = function (url, dataPassed, options, thenFun, catchFun) {
   // this effect does not get called again. 
   useEffect(function () {
     console.log("Calling fetch");
-    fetchData();
+    
     sendPostRequest("/query/postDate", dataPassed)
     .then( function (response) {
       console.log("Response recieved", response);
@@ -60,6 +61,9 @@ const useAsyncFetch = function (url, dataPassed, options, thenFun, catchFun) {
     .catch( function(err) {
       console.log("POST request error", err);
     });
+    
+    fetchData();
+    
   }, []);
 
 }

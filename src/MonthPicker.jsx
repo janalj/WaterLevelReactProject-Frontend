@@ -26,7 +26,8 @@ function MonthPicker(props) {
 
   if (visible) {
     return (
-      <div>
+      <div id="dropDown">
+        <p id="changeMonth">Change month: </p>
         <input
           defaultValue={date.month + "/" + date.year}
           className="inputMonthYear"
@@ -47,13 +48,14 @@ function MonthPicker(props) {
       </div>);
   } else {
     return (
-      <main>
+      <div id="dropDown">
+        <p id="changeMonth">Change month: </p>
         <input
           defaultValue={date.month + "/" + date.year}
           className="inputMonthYear"
           onClick={showFun}
         />
-      </main >
+      </div >
     )
   }
 }
