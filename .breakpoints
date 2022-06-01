@@ -3,9 +3,17 @@
     "src/App.jsx": [
       {
         "id": "c4ced037-49e5-4976-9a78-d88fe06255d0",
-        "line": 63,
-        "version": 3404,
-        "index": 2550
+        "line": 3,
+        "version": 3556,
+        "index": 79
+      }
+    ],
+    "src/useAsyncFetch.jsx": [
+      {
+        "id": "f6731a13-a354-4f0e-9184-94fce403a4f9",
+        "line": 22,
+        "version": 507,
+        "index": 703
       }
     ]
   }

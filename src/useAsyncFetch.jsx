@@ -4,11 +4,27 @@
 import fetch from 'cross-fetch';
 import React, {useEffect} from 'react';
 
-const useAsyncFetch = function (url, options, thenFun, catchFun ) {
+const useAsyncFetch = function (url, dataPassed, options, thenFun, catchFun) {
   console.log("in useAsyncFetch");
 
-
+  // send a POST request
+  async function sendPostRequest(url, postData) {
+    let params = {
+      method: 'POST', 
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(postData) };
+    
+    console.log("about to send POST request");
+    console.log(params);
   
+    let response = await fetch(url,params);
+    if (response.ok) {
+      let data = await response.text();
+      return data;
+    } else {
+      throw Error(response.status);
+    }
+  }
   
   // the usual function that does a fetch
   async function fetchData() {
@@ -37,28 +53,17 @@ const useAsyncFetch = function (url, options, thenFun, catchFun ) {
   useEffect(function () {
     console.log("Calling fetch");
     fetchData();
+    sendPostRequest("/query/postDate", dataPassed)
+    .then( function (response) {
+      console.log("Response recieved", response);
+    })
+    .catch( function(err) {
+      console.log("POST request error", err);
+    });
   }, []);
 
 }
 
-// send a POST request
-async function sendPostRequest(url,data) {
-  let params = {
-    method: 'POST', 
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(data) };
-  
-  console.log("about to send POST request");
-  console.log(params);
-
-  let response = await fetch(url,params);
-  if (response.ok) {
-    let data = await response.json();
-    return data;
-  } else {
-    throw Error(response.status);
-  }
-}
 
 
-export {useAsyncFetch, sendPostRequest};
+export default useAsyncFetch;
