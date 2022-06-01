@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './App.css';
-import useAsyncFetch from './useAsyncFetch';
+import {useAsyncFetch, sendPostRequest} from './useAsyncFetch';
 import { Bar } from "react-chartjs-2";
 import Chart from 'chart.js/auto';
 import MonthPicker from './MonthPicker';
@@ -45,13 +45,13 @@ function App() {
   }
 
 
-  // sendPostRequest("/query/postDate", data)
-  //   .then( function (response) {
-  //     console.log("Response recieved", response);
-  //   })
-  //   .catch( function(err) {
-  //     console.log("POST request error", err);
-  //   });
+  sendPostRequest("/query/postDate", data)
+    .then( function (response) {
+      console.log("Response recieved", response);
+    })
+    .catch( function(err) {
+      console.log("POST request error", err);
+    });
   
   useAsyncFetch("/query/getData", {}, thenFun, catchFun);
   
