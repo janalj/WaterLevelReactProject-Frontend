@@ -40,6 +40,8 @@ function App() {
     year: date.year,
     month: date.month
   }
+
+
   
   useAsyncFetch("/query/getData", data, {}, thenFun, catchFun);
   
@@ -119,10 +121,10 @@ function WaterChart(props) {
     let difference = [10, 10, 10, 10, 10, 10, 10];
   
     console.log("stickerObj array: ", stickerObj.data[0]);
-    for (let i = 0; i < 7; i++) {
-        difference[i] = capacity[i]-stickerObj.data[i];
-    }
-    console.log("difference array: ", difference);
+    // for (let i = 0; i < 7; i++) {
+    //     difference[i] = capacity[i]-stickerObj.data[i];
+    // }
+    // console.log("difference array: ", difference);
 
     let stackedObj = { data: difference, backgroundColor: ["rgb(120,199,227)"], barThickness: 20 }
 

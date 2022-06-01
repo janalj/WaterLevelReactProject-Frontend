@@ -6,7 +6,11 @@ import './App.css';
 function MonthPicker(props) {
 
   let date = props.date;
-
+  
+  defultData = date.month + "/" + date.year;
+  console.log("defaultData: ",date.year);
+  console.log("defaultData: ",date.month);
+  console.log("defaultData: ",defultData);
   const [visible, updateVisible] = useState(false);
 
   function showFun() {
@@ -23,13 +27,13 @@ function MonthPicker(props) {
     props.monthFun(month);
   }
 
-
+  
   if (visible) {
     return (
       <div id="dropDown">
         <p id="changeMonth">Change month: </p>
         <input
-          defaultValue={date.month + "/" + date.year}
+          defaultValue={defultData}
           className="inputMonthYear"
           onClick={showFun}
         />
@@ -51,7 +55,7 @@ function MonthPicker(props) {
       <div id="dropDown">
         <p id="changeMonth">Change month: </p>
         <input
-          defaultValue={date.month + "/" + date.year}
+          defaultValue={defultData}
           className="inputMonthYear"
           onClick={showFun}
         />
