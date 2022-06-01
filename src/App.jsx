@@ -4,6 +4,7 @@ import useAsyncFetch from './useAsyncFetch';
 import { Bar } from "react-chartjs-2";
 import Chart from 'chart.js/auto';
 import MonthPicker from './MonthPicker';
+import ReactDOM from 'react-dom'
 
 function App() {
   // Month Picker 
@@ -53,6 +54,7 @@ function App() {
 
 
   if (seeMore) {  // if seeMore is true 
+    
     return (
       <div id = "Wrapper">
         <button onClick={buttonAction}>See Less</button>

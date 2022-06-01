@@ -20,9 +20,9 @@ ReactDOM.render(
   document.getElementById('root')
 )
 
-ReactDOM.render(
-  <React.StrictMode>
-    <MonthPicker />
-  </React.StrictMode>,
-  document.getElementById('monthPicker')
-)
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <MonthPicker />
+//   </React.StrictMode>,
+//   document.getElementById('monthPicker')
+// )
