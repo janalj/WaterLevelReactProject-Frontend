@@ -20,6 +20,7 @@ async function useAsyncFetch(url, month, year, options, thenFun, catchFun) {
   
     let response = await fetch(url,params);
     if (response.ok) {
+      fetchData();
       let data = await response.text();
       return data;
     } else {
@@ -32,7 +33,7 @@ async function useAsyncFetch(url, month, year, options, thenFun, catchFun) {
     // Send request to origin server at appropriate endpoint
     console.log("in fetchData");
     
-    let api_url = `/query/getData`;
+    let api_url = "/query/getData";
     
     let response = await fetch(api_url);
     console.log("response",response);
