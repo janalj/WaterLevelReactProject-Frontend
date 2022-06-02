@@ -127,7 +127,6 @@ function WaterChart(props) {
 
     let difference = [];
 
-    console.log("stickerObj array: ", stickerObj.data[0]);
     for (let i = 0; i < 7; i++) {
       difference[i] = capacity[i] - stickerObj.data[i];
     }
