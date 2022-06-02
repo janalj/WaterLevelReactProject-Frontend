@@ -32,11 +32,11 @@ function App() {
 
 
   // Testing Data
-  let TestDATA = [{ name: 'University of California-Davis', midIncome: 12875, waterLevel: 30 }, { name: 'Stanford', midIncome: 3985, waterLevel: 20 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 40 }, { name: 'Stanford', midIncome: 3985, waterLevel: 50 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 35 }, { name: 'Stanford', waterLevel: 40 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 40 }, { name: 'Stanford', midIncome: 3985, waterLevel: 74570 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 25 }];
+  let TestDATA = [{ name: 'University of California-Davis', midIncome: 12875, waterLevel: 30 }, { name: 'Stanford', midIncome: 3985, waterLevel: 20 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 40 }, { name: 'Stanford', midIncome: 3985, waterLevel: 50 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 35 }, { name: 'Stanford', waterLevel: 40 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 40 }];
 
 
-  // const [dataArr, upDateArr] = useState([]);
-  let dataArr = [];
+  const [dateArr, upDateArr] = useState(TestDATA);
+  //let dataArr = [];
   
   let data = {
     year: date.year,
@@ -50,16 +50,17 @@ function App() {
   function thenFun(result) {
     // upDateArr(result);
     // render the list once we have it
-    
+    upDateArr(result);
     console.log("thenFun result: ", result);
     console.log((result.length));
     
-    for (let i = 0; i < result.length; i++) {
-      dataArr[i] = result[i];
-    }
-    console.log("upDateArr: ", dataArr);
+    // for (let i = 0; i < result.length; i++) {
+    //   dataArr[i] = result[i];
+    // }
+    //console.log("upDateArr: ", dataArr);
    
   }
+  console.log("dBBB:",dateArr);
   function catchFun(error) {
     console.log(error);
   }
@@ -71,7 +72,7 @@ function App() {
       <div id="Wrapper">
         <button onClick={buttonAction}>See Less</button>
         <div id="bottom">
-          <WaterChart waterData={TestDATA}> </WaterChart>
+          <WaterChart waterData={dateArr}> </WaterChart>
           <div id="textAndPicker">
             <div id="datatext" className='bodyText'>
               Here's a quick look at some of the data on reservoirs from the <a href="https://cdec.water.ca.gov/index.html">California Data Exchange Center</a>, which consolidates climate and water data from multiple federal and state government agencies, and  electric utilities.  Select a month and year to see storage levels in the eleven largest in-state reservoirs.
