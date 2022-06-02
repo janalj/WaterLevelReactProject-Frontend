@@ -8,7 +8,7 @@ import ReactDOM from 'react-dom'
 
 function App() {
   // Month Picker 
-  const [date, setDate] = useState({ month:4 , year: 2022 });
+  const [date, setDate] = useState({ month: 4, year: 2022 });
 
   function yearChange(newYear) {
     let m = date.month;
@@ -30,36 +30,48 @@ function App() {
     } else (setSeeMore(true))
   }
 
-  
+
   // Testing Data
-  // let dataArr = [{ name: 'University of California-Davis', midIncome: 12875, waterLevel: 30 }, { name: 'Stanford', midIncome: 3985, waterLevel: 20 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 40 }, { name: 'Stanford', midIncome: 3985, waterLevel: 50 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 35 }, { name: 'Stanford', waterLevel: 40 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 40 }, { name: 'Stanford', midIncome: 3985, waterLevel: 74570 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 25 }];
+  let TestDATA = [{ name: 'University of California-Davis', midIncome: 12875, waterLevel: 30 }, { name: 'Stanford', midIncome: 3985, waterLevel: 20 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 40 }, { name: 'Stanford', midIncome: 3985, waterLevel: 50 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 35 }, { name: 'Stanford', waterLevel: 40 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 40 }, { name: 'Stanford', midIncome: 3985, waterLevel: 74570 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 25 }];
 
 
-  const [dataArr, upDateArr] = useState([]);
-
+  // const [dataArr, upDateArr] = useState([]);
+  let dataArr = [];
+  
   let data = {
     year: date.year,
     month: date.month
   }
-
+  useEffect(() => {
+	
+  },[]);
   useAsyncFetch("/query/getData", date.month, date.year, {}, thenFun, catchFun);
-  
-  function thenFun (result) {
-    upDateArr(result);
+
+  function thenFun(result) {
+    // upDateArr(result);
     // render the list once we have it
+    
+    console.log("thenFun result: ", result);
+    console.log((result.length));
+    
+    for (let i = 0; i < result.length; i++) {
+      dataArr[i] = result[i];
+    }
+    console.log("upDateArr: ", dataArr);
+   
   }
-  function catchFun (error) {
+  function catchFun(error) {
     console.log(error);
   }
 
 
   if (seeMore) {  // if seeMore is true 
-    
+
     return (
-      <div id = "Wrapper">
+      <div id="Wrapper">
         <button onClick={buttonAction}>See Less</button>
         <div id="bottom">
-          <WaterChart waterData={dataArr}> </WaterChart> 
+          <WaterChart waterData={TestDATA}> </WaterChart>
           <div id="textAndPicker">
             <div id="datatext" className='bodyText'>
               Here's a quick look at some of the data on reservoirs from the <a href="https://cdec.water.ca.gov/index.html">California Data Exchange Center</a>, which consolidates climate and water data from multiple federal and state government agencies, and  electric utilities.  Select a month and year to see storage levels in the eleven largest in-state reservoirs.
@@ -85,12 +97,19 @@ function App() {
     )
   }//end of else statement 
 
+
+
+  
+
+  
 }//end of app
 
 
 
 console.log()
 function WaterChart(props) {
+  
+  console.log("print props,",props.waterData);
   const nicknames = new Map();
   nicknames.set(0, 'Shasta');
   nicknames.set(1, 'Ororville');
@@ -101,10 +120,10 @@ function WaterChart(props) {
   nicknames.set(6, 'Berryessa');
   //Station Ids: SHA, ORO, CLE, NML, LUS, DNP, BER 
 
-  if (props.waterData) { 
+  if (props.waterData) {
     let n = props.waterData.length;
     console.log("Water Data", props.waterData);
-    
+
     // objects containing row values
     let stickerObj = { data: [], backgroundColor: ["rgb(66,145,152)"], barThickness: 20 }
     let labels = [];
@@ -115,14 +134,14 @@ function WaterChart(props) {
 
     // Returned the capacity array here 
     let capacity = [4552000, 3537577, 2447650, 317000, 1062000, 2030000, 1602000];
-    
+
     //capacities for: SHA, ORO, CLE, NML, LUS, DNP, BER 
 
     let difference = [10, 10, 10, 10, 10, 10, 10];
-  
+
     console.log("stickerObj array: ", stickerObj.data[0]);
     for (let i = 0; i < 7; i++) {
-        difference[i] = capacity[i]-stickerObj.data[i];
+      difference[i] = capacity[i] - stickerObj.data[i];
     }
     console.log("difference array: ", difference);
 

@@ -4,16 +4,16 @@
       {
         "id": "fddba066-56bc-4a01-a5c0-ee9958ae280c",
         "line": 7,
-        "version": 575,
+        "version": 783,
         "index": 195
       }
     ],
     "src/useAsyncFetch.jsx": [
       {
         "id": "f6731a13-a354-4f0e-9184-94fce403a4f9",
-        "line": 4,
-        "version": 662,
-        "index": 157
+        "line": 1,
+        "version": 979,
+        "index": 0
       }
     ]
   }
