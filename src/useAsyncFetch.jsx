@@ -63,7 +63,7 @@ async function useAsyncFetch(url, month, year, options, thenFun, catchFun) {
       console.log("POST request error", err);
     });
     
-    fetchData();
+    //fetchData();
     
   }, []);
 

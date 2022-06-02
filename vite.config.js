@@ -13,7 +13,8 @@ export default {
     },
   proxy: {
       '/query': {
-        target: 'https://WaterLevelReactProject-Backend.ecs162-s22.repl.co',
+        target: 'https://BackupServer.janalj.repl.co',
+        // target: 'https://WaterLevelReactProject-Backend.ecs162-s22.repl.co',
         changeOrigin: true,
         secure: false,
         ws: true

@@ -26,6 +26,8 @@ function MonthPicker(props) {
 
 
   if (visible) {
+    console.log("Picked month",date.month);
+    console.log("Picked year: ", date.year);
     return (
       <div id="dropDown">
         <div id="changeMonth">Change month: </div>
