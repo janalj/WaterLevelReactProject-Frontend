@@ -8,15 +8,14 @@ async function useAsyncFetch(url, month, year, options, thenFun, catchFun) {
   console.log("in useAsyncFetch");
 
   // send a POST request
-  async function sendPostRequest(url, postData) {
-    console.log('postData',postData);
+  async function sendPostRequest(url, month, year) {
     
     let params = {
     method: 'POST', 
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({ month: month, year: year }
-) };
-    console.log('body',params.body);
+    ) };
+    console.log('body', params.body);
     console.log("about to send POST request");
   
     let response = await fetch(url,params);

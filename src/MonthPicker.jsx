@@ -24,12 +24,8 @@ function MonthPicker(props) {
     props.monthFun(month);
   }
 
-  
+
   if (visible) {
-    
-    // useAsyncFetch("/query/getData", data.year, data.month, {}, thenFun, catchFun);
-    console.log("updated year: ",data.year);
-    console.log("updated month: ",data.month);
     return (
       <div id="dropDown">
         <div id="changeMonth">Change month: </div>
