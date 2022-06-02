@@ -20,7 +20,7 @@ async function useAsyncFetch(url, month, year, options, thenFun, catchFun) {
   
     let response = await fetch(url,params);
     if (response.ok) {
-      fetchData();
+      await fetchData();
       let data = await response.text();
       return data;
     } else {
@@ -36,12 +36,12 @@ async function useAsyncFetch(url, month, year, options, thenFun, catchFun) {
     let api_url = "/query/getData";
     
     let response = await fetch(api_url);
-    console.log("response",response);
+    console.log("response: ");
     // Wait for origin server to send back JSON object
     let json = await response.json();
 
     // Sanity check the contents of the JSON
-    console.log(json);
+    console.log("api data passsed from server",json);
     thenFun(json);
   }
 
