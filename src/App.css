@@ -94,7 +94,7 @@ button{
   border: none;
   border-radius: 10px;
   margin: 20px;
-  margin-left: 30px;
+  margin-left: 0px;
   
   font-family: 'inter';
   font-size: 16px;
@@ -173,6 +173,10 @@ a {
   h1 {
     justify-content: flex-start;
     text-indent: 12vw;
+  }
+
+  button{
+    margin-left: 30px;
   }
   
   div#text1 {

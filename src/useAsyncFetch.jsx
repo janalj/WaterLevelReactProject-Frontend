@@ -66,7 +66,7 @@ async function useAsyncFetch(url, month, year, options, thenFun, catchFun) {
     
     //fetchData();
     
-  }, []);
+  }, [month]);
 
 }
 
