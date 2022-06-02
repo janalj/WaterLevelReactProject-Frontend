@@ -134,11 +134,11 @@ function WaterChart(props) {
     }
 
     // Returned the capacity array here 
-    let capacity = [4552000, 3537577, 2447650, 317000, 1062000, 2030000, 1602000];
+    let capacity = [4552000, 3537577, 2447650, 3170000, 1062000, 2030000, 1602000];
 
     //capacities for: SHA, ORO, CLE, NML, LUS, DNP, BER 
 
-    let difference = [10, 10, 10, 10, 10, 10, 10];
+    let difference = [];
 
     console.log("stickerObj array: ", stickerObj.data[0]);
     for (let i = 0; i < 7; i++) {
@@ -184,10 +184,10 @@ function WaterChart(props) {
           grid: {
             display: false
           },
-          min: 10,
-          max: 60,
+          beginAtZero:true,
+          max: 6000000,
           ticks: {
-            stepSize: 10
+            stepSize: 1000000
           },
           stacked: true
 
