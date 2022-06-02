@@ -31,12 +31,11 @@ function App() {
   }
 
 
-  // Testing Data
-  let TestDATA = [{ name: 'University of California-Davis', midIncome: 12875, waterLevel: 30 }, { name: 'Stanford', midIncome: 3985, waterLevel: 20 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 40 }, { name: 'Stanford', midIncome: 3985, waterLevel: 50 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 35 }, { name: 'Stanford', waterLevel: 40 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 40 }];
+  // hardcoded data for 4/2022 before real data comes back 
+  let TestDATA = [{ waterLevel: 1808220 }, { waterLevel: 1916629 }, {  waterLevel: 766349 }, {  waterLevel: 922382 }, {  waterLevel: 593055 }, {  waterLevel: 1289131 }, {  waterLevel: 996052 }];
 
 
   const [dateArr, upDateArr] = useState(TestDATA);
-  //let dataArr = [];
   
   let data = {
     year: date.year,
@@ -51,16 +50,9 @@ function App() {
     // upDateArr(result);
     // render the list once we have it
     upDateArr(result);
-    console.log("thenFun result: ", result);
-    console.log((result.length));
-    
-    // for (let i = 0; i < result.length; i++) {
-    //   dataArr[i] = result[i];
-    // }
-    //console.log("upDateArr: ", dataArr);
-   
+ 
   }
-  console.log("dBBB:",dateArr);
+  
   function catchFun(error) {
     console.log(error);
   }
@@ -99,15 +91,10 @@ function App() {
   }//end of else statement 
 
 
-
-  
-
-  
 }//end of app
 
 
 
-console.log()
 function WaterChart(props) {
   
   console.log("print props,",props.waterData);
@@ -146,10 +133,8 @@ function WaterChart(props) {
     }
     console.log("difference array: ", difference);
 
-    let stackedObj = { data: difference, backgroundColor: ["rgb(120,199,227)"], barThickness: 20 }
-
-
-
+    let stackedObj = { data: difference, backgroundColor: ["rgb(120,199,227)"], barThickness: 20 };
+    
     let userData = {};
     userData.labels = labels;
     userData.datasets = [stickerObj, stackedObj];
