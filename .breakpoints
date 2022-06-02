@@ -1,10 +1,18 @@
 {
   "files": {
+    "src/App.jsx": [
+      {
+        "id": "da6e7ca8-12a2-4cfc-8167-1397696b7a2a",
+        "line": 46,
+        "version": 4246,
+        "index": 1725
+      }
+    ],
     "src/MonthPicker.jsx": [
       {
         "id": "fddba066-56bc-4a01-a5c0-ee9958ae280c",
         "line": 7,
-        "version": 575,
+        "version": 604,
         "index": 195
       }
     ],
@@ -12,7 +20,7 @@
       {
         "id": "f6731a13-a354-4f0e-9184-94fce403a4f9",
         "line": 4,
-        "version": 662,
+        "version": 685,
         "index": 157
       }
     ]

@@ -34,7 +34,6 @@ function App() {
   // Testing Data
   //let dataArr = [{ name: 'University of California-Davis', midIncome: 12875, waterLevel: 30 }, { name: 'Stanford', midIncome: 3985, waterLevel: 20 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 40 }, { name: 'Stanford', midIncome: 3985, waterLevel: 50 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 35 }, { name: 'Stanford', waterLevel: 40 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 40 }, { name: 'Stanford', midIncome: 3985, waterLevel: 74570 }, { name: 'California Polytechnic State University-San Luis Obispo', midIncome: 15601, waterLevel: 25 }];
 
-
   const [dataArr, upDateArr] = useState([]);
 
   let data = {
@@ -42,7 +41,7 @@ function App() {
     month: date.month
   }
 
-  useAsyncFetch("/query/getData", data, {}, thenFun, catchFun);
+  useAsyncFetch("/query/getData", data.year, data.month, {}, thenFun, catchFun);
   
   function thenFun (result) {
     upDateArr(result);
